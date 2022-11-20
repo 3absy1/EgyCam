@@ -2,15 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Register\RegisterCustomer;
-use App\Http\Requests\StoreCustomerRequest;
-use App\Http\Requests\UpdateCustomerRequest;
-use App\Http\Resources\Register\CustomerCollection;
-use App\Http\Resources\Register\CustomerResource;
-use App\Models\Customer;
+use App\Http\Requests\Login\LoginUser;
+use App\Http\Resources\Login\UserCollection;
+use App\Http\Resources\Login\UserResource;
 use App\Models\User;
+use Illuminate\Http\Request;
 
-class RegisterCustomerController extends Controller
+class LoginUserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,8 +17,6 @@ class RegisterCustomerController extends Controller
      */
     public function index()
     {
-        $customer=User::all();
-        return new CustomerCollection($customer);
 
     }
 
@@ -40,43 +36,35 @@ class RegisterCustomerController extends Controller
      * @param  \App\Http\Requests\StoreCustomerRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreCustomerRequest $request)
+    public function store(LoginUser $request)
     {
-        $user=User::create($request->all());
+        $user=User::where($request->all());
         return response()->json([
             'token' => $user->createToken("API TOKEN")->plainTextToken
         ], 200);
-        return new CustomerResource($user);
+        return new UserResource($user);
 
     }
-//    public function register(StoreCustomerRequest $request)
-//    {
-//        return new CustomerResource(Customer::create($request->all()));
-//
-//    }
 
 
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Customer  $customer
+     * @param  \App\Models\User  $customer
      * @return \Illuminate\Http\Response
      */
     public function show(User $customer)
     {
-        return new CustomerResource($customer);
-
     }
-
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Customer  $customer
+     * @param  \App\Models\User  $customer
      * @return \Illuminate\Http\Response
      */
-    public function edit(Customer $customer)
+    public function edit(User $customer)
     {
 
     }
@@ -85,21 +73,18 @@ class RegisterCustomerController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\UpdateCustomerRequest  $request
-     * @param  \App\Models\Customer  $customer
+     * @param  \App\Models\User  $customer
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCustomerRequest $request, Customer $customer)
-    {
-        //
-    }
+
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Customer  $customer
+     * @param  \App\Models\User  $customer
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Customer $customer)
+    public function destroy(User $customer)
     {
         //
     }

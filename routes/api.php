@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\CitiesController;
-use App\Http\Controllers\LoginCustomerController;
-use App\Http\Controllers\RegisterCustomerController;
+use App\Http\Controllers\LoginUserController;
+use App\Http\Controllers\RegisterUserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +22,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 Route::apiResource('cities', CitiesController::class);
 //    ->middleware('auth:sanctum');
-Route::apiResource('customer/register',RegisterCustomerController::class);
-    Route::apiResource('customer/login',LoginCustomerController::class);
+Route::apiResource('customer/register',RegisterUserController::class);
+    Route::apiResource('customer/login',LoginUserController::class);
 

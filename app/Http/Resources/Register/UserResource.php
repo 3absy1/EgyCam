@@ -4,7 +4,7 @@ namespace App\Http\Resources\Register;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class CustomerResource extends JsonResource
+class UserResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -21,8 +21,10 @@ class CustomerResource extends JsonResource
             'email' =>$this->email,
             'phone' =>$this->phone,
             'password' =>$this->password,
-            'confirmPassword' =>$this->confirm_password,
+            'confirmPassword' =>$this->password,
+
 
         ];
+
     }
 }
