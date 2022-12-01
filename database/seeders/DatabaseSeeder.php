@@ -65,6 +65,18 @@ class DatabaseSeeder extends Seeder
             'category_id' =>$wedding->id,
             'name'=>'اعمالنا فى الزفاف ',
         ]);
+        SubCategory::create([
+            'category_id' =>$graduate->id,
+            'name'=>'كاميرات',
+        ]);
+        SubCategory::create([
+            'category_id' =>$graduate->id,
+            'name'=>'فيديوهات',
+        ]);
+        SubCategory::create([
+            'category_id' =>$graduate->id,
+            'name'=>'اعمال فى الزفافه ',
+        ]);
 
         //*******************************   services     *************************************************
          Services::create([

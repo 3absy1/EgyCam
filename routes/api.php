@@ -23,13 +23,14 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::apiResource('user/cities', CitiesController::class)
-    ->middleware('auth:sanctum');
-Route::apiResource('user/register',RegisterUserController::class);
+Route::apiResource('register',RegisterUserController::class);
+Route::post('login', [LoginUserController::class, 'loginUser']);
+Route::apiResource('cities', CitiesController::class);
+//    ->middleware('auth:sanctum');
 //    Route::apiResource('user/login',LoginUserController::class);
-Route::post('/user/login', [LoginUserController::class, 'loginUser']);
-Route::apiResource('user/category',CategoryController::class);
-Route::apiResource('user/sub',SubCategoryController::class);
-Route::apiResource('user/services',ServicesController::class);
+Route::apiResource('category',CategoryController::class);
+Route::apiResource('category/{id}/sub',[CategoryController::class,'showbyid']);
+Route::apiResource('sub',SubCategoryController::class);
+Route::apiResource('services',ServicesController::class);
 
 
