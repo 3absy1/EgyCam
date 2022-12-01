@@ -7,6 +7,7 @@ use App\Http\Resources\SubCategory\SubCategoryResource;
 use App\Models\SubCategory;
 use App\Http\Requests\StoreSubCategoryRequest;
 use App\Http\Requests\UpdateSubCategoryRequest;
+use Illuminate\Http\Request;
 
 class SubCategoryController extends Controller
 {
@@ -15,9 +16,10 @@ class SubCategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request, int $categoryID)
     {
-        $subcategory=SubCategory::all();
+        dd($request->all());
+        $subcategory = SubCategory::where('category_id', $categoryID)->get();
         return new SubCategoryCollection($subcategory);
     }
 

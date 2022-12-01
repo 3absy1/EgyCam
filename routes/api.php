@@ -28,9 +28,9 @@ Route::post('login', [LoginUserController::class, 'loginUser']);
 Route::apiResource('cities', CitiesController::class);
 //    ->middleware('auth:sanctum');
 //    Route::apiResource('user/login',LoginUserController::class);
-Route::apiResource('category',CategoryController::class);
-Route::apiResource('category/{id}/sub',[CategoryController::class,'showbyid']);
-Route::apiResource('sub',SubCategoryController::class);
-Route::apiResource('services',ServicesController::class);
+Route::apiResource('categories', CategoryController::class);
+Route::apiResource('categories/{categoryID}/sub-categories', SubCategoryController::class);
+Route::apiResource('sub-categories/{subCategoryID}/services', ServicesController::class);
+Route::apiResource('orders', \App\Http\Controllers\OrderController::class);
 
 

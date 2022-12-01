@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\Category\CategoryCollection;
-use App\Http\Resources\Category\CategoryResource;
-use App\Models\Category;
-use App\Http\Requests\StoreCategoryRequest;
-use App\Http\Requests\UpdateCategoryRequest;
+use App\Http\Requests\StoreOrderValidator;
+use App\Http\Resources\Cities\CitiesCollection;
+use App\Http\Resources\Cities\CitiesResource;
+use App\Models\Cities;
+use App\Http\Requests\StoreCitiesRequest;
+use App\Http\Requests\UpdateCitiesRequest;
+use App\Models\User;
+use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +20,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $category = Category::all();
-        return new CategoryCollection($category);
+
+
     }
 
     /**
@@ -28,39 +31,38 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreCategoryRequest  $request
+     * @param  \App\Http\Requests\StoreCitiesRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreCategoryRequest $request)
+    public function store(StoreOrderValidator $request)
     {
-        //
+        dd($request->all());
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Cities  $cities
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show(Cities $cities)
     {
-        return new CategoryResource($category);
 
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Cities  $cities
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit(Cities $cities)
     {
         //
     }
@@ -68,11 +70,11 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateCategoryRequest  $request
-     * @param  \App\Models\Category  $category
+     * @param  \App\Http\Requests\UpdateCitiesRequest  $request
+     * @param  \App\Models\Cities  $cities
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCategoryRequest $request, Category $category)
+    public function update(UpdateCitiesRequest $request, Cities $cities)
     {
         //
     }
@@ -80,10 +82,10 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Cities  $cities
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy(Cities $cities)
     {
         //
     }

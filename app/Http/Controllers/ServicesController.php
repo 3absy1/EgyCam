@@ -15,9 +15,9 @@ class ServicesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(int $subCategoryID)
     {
-        $services=Services::all();
+        $services = Services::all();
         return new ServicesCollection($services);
     }
 

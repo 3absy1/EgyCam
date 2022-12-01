@@ -28,19 +28,11 @@ class RegisterUser extends FormRequest
             'name' =>['required'],
             'username' =>['required'],
             'email' =>['required','email'],
-            'phone' =>['required'],
-            'password' =>['required','confirm'],
-            'confirmPassword' => ['required'],
+            'phone' =>['required', 'digits:11'],
+            'password' =>['required','confirmed'],
 
 
         ];
 
-    }
-
-    protected function prepareForValidation()
-    {
-        $this->merge([
-            'confirm_password' =>$this->confirmPassword
-        ]);
     }
 }
