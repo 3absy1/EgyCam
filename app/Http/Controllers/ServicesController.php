@@ -17,7 +17,7 @@ class ServicesController extends Controller
      */
     public function index(int $subCategoryID)
     {
-        $services = Services::all();
+        $services = Services::where('subcategory_id', $subCategoryID)->get();
         return new ServicesCollection($services);
     }
 

@@ -6,9 +6,9 @@ use App\Http\Requests\Register\RegisterUser;
 use App\Http\Requests\StoreCustomerRequest;
 use App\Http\Requests\UpdateCustomerRequest;
 use App\Http\Resources\Register\UserCollection;
+use \Illuminate\Http\Request;
 use App\Http\Resources\Register\UserResource;
 use App\Models\User;
-
 class RegisterUserController extends Controller
 {
     /**
@@ -87,10 +87,28 @@ class RegisterUserController extends Controller
      * @param  \App\Models\User  $customer
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCustomerRequest $request, User $customer)
+    public function update(UpdateCustomerRequest $request, User $user,int $id)
     {
-        //
+        $user->where('id', $id)->update($request->validated());
+
+//        $user->where('id', $id)->update($request->validated());
+//        $user->update($request->all());
+
     }
+//    public function update(RegisterUser $request,$id)
+//    {
+//     $update=User::where('category_id', $id)->get();
+//     $update->update($request->all());
+//
+////        $request->validate([
+////
+////            'name'=>'required'
+////        ]);
+////        $update=User::find($id);
+////        $update->name=$request->name;
+////        $update->update();
+////        return response()->json(['message'=>'update successfully'],200);
+//    }
 
     /**
      * Remove the specified resource from storage.

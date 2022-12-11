@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\SubCategory\SubCategoryCollection;
-use App\Http\Resources\SubCategory\SubCategoryResource;
+use App\Http\Resources\SubCategory\OrdersCollection;
+use App\Http\Resources\SubCategory\OrdersResource;
 use App\Models\SubCategory;
 use App\Http\Requests\StoreSubCategoryRequest;
 use App\Http\Requests\UpdateSubCategoryRequest;
@@ -18,9 +18,9 @@ class SubCategoryController extends Controller
      */
     public function index(Request $request, int $categoryID)
     {
-        dd($request->all());
+//        dd($request->all());
         $subcategory = SubCategory::where('category_id', $categoryID)->get();
-        return new SubCategoryCollection($subcategory);
+        return new OrdersCollection($subcategory);
     }
 
     /**
@@ -52,7 +52,7 @@ class SubCategoryController extends Controller
      */
     public function show(SubCategory $subCategory)
     {
-        return new SubCategoryResource($subCategory);
+        return new OrdersResource($subCategory);
 
     }
 
