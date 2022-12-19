@@ -6,7 +6,6 @@ use App\Http\Requests\Register\RegisterUser;
 use App\Http\Requests\StoreCustomerRequest;
 use App\Http\Requests\UpdateCustomerRequest;
 use App\Http\Resources\Register\UserCollection;
-use \Illuminate\Http\Request;
 use App\Http\Resources\Register\UserResource;
 use App\Models\User;
 class RegisterUserController extends Controller
@@ -87,12 +86,11 @@ class RegisterUserController extends Controller
      * @param  \App\Models\User  $customer
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCustomerRequest $request, User $user,int $id)
+    public function update(UpdateCustomerRequest $request, User $user )
     {
-        $user->where('id', $id)->update($request->validated());
+        $user_id=$request->user()->id;
 
-//        $user->where('id', $id)->update($request->validated());
-//        $user->update($request->all());
+        $user->where('id', $user_id)->update($request->validated());
 
     }
 //    public function update(RegisterUser $request,$id)

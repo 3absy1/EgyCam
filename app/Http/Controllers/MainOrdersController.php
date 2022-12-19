@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\OrderDetails\OrderDetailsCollection;
 use App\Http\Resources\Orders\OrdersCollection;
 use App\Http\Resources\Orders\OrdersResource;
+use App\Http\Resources\Services\ServicesCollection;
+use App\Http\Resources\Services\ServicesResource;
 use App\Models\Orders;
 use App\Http\Requests\StoreOrdersRequest;
 use App\Http\Requests\UpdateOrdersRequest;
+use App\Models\Services;
+use Illuminate\Http\Request;
 
 class MainOrdersController extends Controller
 {
@@ -15,11 +20,21 @@ class MainOrdersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(int $userID)
+    public function index(Request $request,int $servicesID)
     {
 
-        $user = Orders::where('id', $userID)->get();
-        return new OrdersCollection($user);
+        $user_id=$request->user()->id;
+        $user_name=$request->user()->name;
+        $service=Services::where('id', $servicesID)->get();
+
+
+        $user = Orders::where('user_id', $user_id )->where('services_id', $servicesID)->get();
+//        return new OrderDetailsCollection($user);
+        return [
+            'Name'=>$user_name,
+            'DeliveryTo' => new OrderDetailsCollection($user),
+            'YourOrder' => new ServicesCollection($service),
+        ];
 
     }
 

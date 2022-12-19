@@ -8,6 +8,9 @@ use App\Models\Settings;
 use App\Http\Requests\StoreSettingsRequest;
 use App\Http\Requests\UpdateSettingsRequest;
 use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Laravel\Sanctum\PersonalAccessToken;
 
 class SettingsController extends Controller
 {
@@ -16,9 +19,10 @@ class SettingsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $user = User::all();
+        $user_id=$request->user()->id;
+        $user = User::where('id', $user_id)->get();
         return new SettingCollection($user);
     }
 

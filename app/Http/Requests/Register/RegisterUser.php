@@ -29,7 +29,10 @@ class RegisterUser extends FormRequest
             'username' =>['required'],
             'email' =>['required','email'],
             'phone' =>['required', 'digits:11'],
-            'password' =>['required','confirmed'],
+//            'otp'=>['required'],
+            'password' =>['required'],
+            'confirm_password' =>['required'],
+
 
 
         ];

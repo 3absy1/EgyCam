@@ -7,6 +7,7 @@ use App\Http\Controllers\ComplaintController;
 use App\Http\Controllers\EditName;
 use App\Http\Controllers\LoginUserController;
 use App\Http\Controllers\MainOrdersController;
+use App\Http\Controllers\OTPController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\SuggestionController;
 use App\Http\Controllers\TeamController;
@@ -42,18 +43,30 @@ Route::apiResource('cities', CitiesController::class);
 Route::apiResource('categories', CategoryController::class);
 Route::apiResource('categories/{categoryID}/sub-categories', SubCategoryController::class);
 Route::apiResource('sub-categories/{subCategoryID}/services', ServicesController::class);
-Route::apiResource('services/{servicesID}/orders', OrdersController::class);
-Route::apiResource('user/{userID}/orders', UserOrdersController::class);
-Route::apiResource('orders', MainOrdersController::class);
+Route::apiResource('services/{servicesID}/orders', OrdersController::class); //take userid and service id
+//Route::apiResource('user/{userID}/orders', UserOrdersController::class);
+//Route::apiResource('orderDetails', MainOrdersController::class);
 Route::apiResource('policy', UsagePolicyController::class);
 Route::apiResource('aboutUs', UsageController::class);
 Route::apiResource('team', TeamController::class);
 Route::apiResource('callUs', CallusController::class);
 Route::apiResource('suggestion', SuggestionController::class);
 Route::apiResource('complaint', ComplaintController::class);
-Route::apiResource('setting', SettingsController::class)
-    ->middleware('auth:sanctum');
-Route::put('user/{id}/edit', [RegisterUserController::class,'update']);
+//Route::apiResource('setting', SettingsController::class)
+//    ->middleware('auth:sanctum');
+//Route::put('user/{id}/edit', [RegisterUserController::class,'update']);
+
+Route::group(['middleware'=>'auth:sanctum'],function (){
+    Route::apiResource('orders', UserOrdersController::class);
+    Route::apiResource('services/{servicesID}/orderDetails', MainOrdersController::class);
+    Route::apiResource('setting', SettingsController::class);
+    Route::put('edit', [RegisterUserController::class,'update']);
+});
+Route::apiResource('otp',OTPController::class);
+
+//2|eoEuOD0yVyhs7Nhrjh5BiCVyQM6jIbkGxEyI4lGe
+//1|1FoYtwc1Hl81DC4yzPinWVC6AoWP8bdrBCxsaNpF
+
 
 
 

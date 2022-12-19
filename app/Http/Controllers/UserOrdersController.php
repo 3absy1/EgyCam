@@ -7,6 +7,7 @@ use App\Http\Resources\Orders\OrdersResource;
 use App\Models\Orders;
 use App\Http\Requests\StoreOrdersRequest;
 use App\Http\Requests\UpdateOrdersRequest;
+use Illuminate\Http\Request;
 
 class UserOrdersController extends Controller
 {
@@ -15,10 +16,11 @@ class UserOrdersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(int $userID)
+    public function index(Request $request)
     {
+        $user_id=$request->user()->id;
 
-        $user = Orders::where('user_id', $userID)->get();
+        $user = Orders::where('user_id', $user_id)->get();
         return new OrdersCollection($user);
 
     }
