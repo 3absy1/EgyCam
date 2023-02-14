@@ -29,8 +29,12 @@ class CitiesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(int $cityID)
     {
+        return view('admin.editcities',[
+            'cities'=>Cities::all()->where('id',$cityID),
+            'cityID' => $cityID
+        ]);
 
     }
 
@@ -65,7 +69,7 @@ class CitiesController extends Controller
      */
     public function edit(Cities $cities)
     {
-        //
+
     }
 
     /**
@@ -75,9 +79,13 @@ class CitiesController extends Controller
      * @param  \App\Models\Cities  $cities
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCitiesRequest $request, Cities $cities)
+    public function update(UpdateCitiesRequest $request, int $cityID)
     {
-        //
+        $edit = Cities::find($cityID);
+        $edit->name = $request->input('name');
+        $edit->update();
+        return redirect('Cities')->with('status','Updated Successfully');
+//dd($cityName);
     }
 
     /**

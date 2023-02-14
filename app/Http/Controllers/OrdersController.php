@@ -30,9 +30,13 @@ class OrdersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(int $ordersID)
     {
-        //
+        return view('admin.editorders',[
+            'orders'=>Orders::all()->where('id',$ordersID),
+            'ordersID' => $ordersID
+        ]);
+
     }
 
     /**
@@ -78,9 +82,16 @@ class OrdersController extends Controller
      * @param  \App\Models\Orders  $orders
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateOrdersRequest $request, Orders $orders)
+    public function update(UpdateOrdersRequest $request, int $ordersID)
     {
-        //
+        $edit = Orders::find($ordersID);
+        $edit->phone = $request->input('phone');
+        $edit->note = $request->input('description');
+        $edit->time = $request->input('time');
+        $edit->history = $request->input('history');
+
+        $edit->update();
+        return redirect('Orders')->with('status','Updated Successfully');
     }
 
     /**

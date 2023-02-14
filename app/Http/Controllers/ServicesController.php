@@ -26,9 +26,13 @@ class ServicesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(int $servicesID)
     {
-        //
+        return view('admin.editservices',[
+            'services'=>Services::all()->where('id',$servicesID),
+            'servicesID' => $servicesID
+        ]);
+
     }
 
     /**
@@ -72,9 +76,14 @@ class ServicesController extends Controller
      * @param  \App\Models\Services  $services
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateServicesRequest $request, Services $services)
+    public function update(UpdateServicesRequest $request,  int $servicesID)
     {
-        //
+        $edit = Services::find($servicesID);
+        $edit->name = $request->input('name');
+        $edit->description = $request->input('description');
+        $edit->price = $request->input('price');
+        $edit->update();
+        return redirect('Services')->with('status','Updated Successfully');
     }
 
     /**

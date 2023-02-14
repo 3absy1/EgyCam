@@ -9,6 +9,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use  App\Http\Requests;
+
 
 class LoginUserController extends Controller
 {
@@ -27,9 +29,13 @@ class LoginUserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(int $userID)
     {
-        //
+        return view('admin.editusers',[
+            'users'=>User::all()->where('id',$userID),
+            'userID' => $userID
+        ]);
+
     }
 
     /**
@@ -105,6 +111,17 @@ class LoginUserController extends Controller
     public function edit(User $customer)
     {
 
+    }
+
+    public function update(Request $request,  int $usersID)
+    {
+        $edit = User::find($usersID);
+        $edit->name = $request->input('name');
+        $edit->username = $request->input('username');
+        $edit->phone = $request->input('phone');
+        $edit->email = $request->input('email');
+        $edit->update();
+        return redirect('Users')->with('status','Updated Successfully');
     }
 
     /**
