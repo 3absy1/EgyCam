@@ -64,8 +64,6 @@ Route::group(['middleware'=>'auth:sanctum'],function (){
 });
 Route::apiResource('otp',OTPController::class);
 
-//2|eoEuOD0yVyhs7Nhrjh5BiCVyQM6jIbkGxEyI4lGe
-//1|1FoYtwc1Hl81DC4yzPinWVC6AoWP8bdrBCxsaNpF
 
 
 
