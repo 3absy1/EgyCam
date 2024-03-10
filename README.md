@@ -1,3 +1,18 @@
+A mobile app on Android & IOS for hiring camera operators and creating marketing materials for special events from EgyCam company.
+I developed the APIs for the iOS and Android platforms using PHP, Laravel, and MySQL. I also created the dashboard for managing orders and all other system entities using HTML, CSS, and JavaScript.
+
+![Screenshot 2024-03-11 014808](https://github.com/3absy1/EgyCam/assets/102052336/f073b266-49a8-4fac-9904-242af0cb835f)
+![Screenshot 2024-03-11 014848](https://github.com/3absy1/EgyCam/assets/102052336/f37e85e3-0071-4904-a60d-d004e61e6e70)
+![Screenshot 2024-03-11 014921](https://github.com/3absy1/EgyCam/assets/102052336/823aa0c3-a367-463c-bfa3-d9c522a877f2)
+![Screenshot 2024-03-11 014947](https://github.com/3absy1/EgyCam/assets/102052336/db8e4b6b-4425-435a-921b-5b62b5aa383a)
+![Screenshot 2024-03-11 015011](https://github.com/3absy1/EgyCam/assets/102052336/ad4aec68-39fd-48ee-80fe-c9cebc161cc1)
+![Screenshot 2024-03-11 015049](https://github.com/3absy1/EgyCam/assets/102052336/37db2fb0-ac43-41ac-b304-059b806a2130)
+![Screenshot 2024-03-11 015111](https://github.com/3absy1/EgyCam/assets/102052336/38991e1d-d5c2-4105-b218-53c053c6515b)
+![Screenshot 2024-03-11 015148](https://github.com/3absy1/EgyCam/assets/102052336/c47c845d-64dd-4c4e-a86c-2cb8f02587ac)
+![Screenshot 2024-03-11 015225](https://github.com/3absy1/EgyCam/assets/102052336/d1baf89c-5145-4496-a2d5-32820d9a937e)
+![Screenshot 2024-03-11 015245](https://github.com/3absy1/EgyCam/assets/102052336/2879ff39-57ec-4a75-880f-3c4a619f5f86)
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
